@@ -14,7 +14,7 @@ function App() {
 
         <Header />
 
-        <div className="p-3">
+        <div className="p-3 pt-16">
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
