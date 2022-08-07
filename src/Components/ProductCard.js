@@ -14,6 +14,9 @@ function ProductCard(props) {
                     <div className="font-bold mb-3">
                         $ {props.product.price}
                     </div>
+                    <div className="mb-3">
+                        {props.product.description}
+                    </div>
                     <div className="bg-blue-500 text-white p-2 flex justify-center w-full">
                         view
                     </div>

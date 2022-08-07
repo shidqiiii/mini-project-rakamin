@@ -1,39 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import HelloWorld from '../Components/HelloWorld'
-import axios from 'axios'
+import React from 'react'
+// import HelloWorld from '../Components/HelloWorld'
 import Loader from '../Components/Loader';
 import ProductCard from '../Components/ProductCard';
+import useAxiosGet from '../Hooks/HttpRequest';
 
 function Home() {
     const url = 'https://62eea41cc1ef25f3da8cbcd5.mockapi.io/products/?page=1&limit=10'
 
-    const [products, setProducts] = useState({
-        loading: false,
-        data: null,
-        error: false
-    });
+    let products = useAxiosGet(url)
 
     let content = null
-
-    useEffect(() => {
-        setProducts({
-            ...products,
-            loading: true
-        })
-        axios.get(url)
-            .then(response => {
-                setProducts({
-                    ...products,
-                    data: response.data
-                })
-            })
-            .catch(() => {
-                setProducts({
-                    ...products,
-                    error: true
-                })
-            })
-    }, [url]);
 
     if (products.error) {
         content = (<p>There was an error. Please refresh or try again later</p>)
